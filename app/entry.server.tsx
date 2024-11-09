@@ -70,9 +70,11 @@ export default async function handleRequest(
   }
 
   responseHeaders.set('Content-Type', 'text/html');
-
   responseHeaders.set('Cross-Origin-Embedder-Policy', 'require-corp');
   responseHeaders.set('Cross-Origin-Opener-Policy', 'same-origin');
+  responseHeaders.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
+  responseHeaders.setHeader("Access-Control-Allow-Origin", "*");
+  responseHeaders.setHeader("Access-Control-Allow-Methods", "GET");
 
   return new Response(body, {
     headers: responseHeaders,
